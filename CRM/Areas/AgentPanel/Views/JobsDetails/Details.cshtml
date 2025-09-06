@@ -1,0 +1,189 @@
+﻿@model CRM.Areas.Admin.Models.Job
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/AgentPanel/Views/Shared/_LayotAgent.cshtml";
+}
+
+<br />
+@{ if (@Session["messages"] != null)
+    {
+
+
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+
+            <strong>
+                <i class="ace-icon fa fa-times"></i>
+                Oh !
+            </strong>
+
+            @Session["messages"]
+            <br />
+        </div>
+        Session["messages"] = null;
+
+
+
+    }
+
+}
+
+
+<div class="profile-user-info profile-user-info-striped">
+    <div class="profile-info-row">
+        <div class="profile-info-name"> شماره سفارش </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="age"> <strong>@Html.DisplayFor(model => model.ProcessID)</strong></span>
+        </div>
+    </div>
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> عنوان کار </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="username">
+                @Html.DisplayFor(model => model.Title)
+                <br />
+                @Session["Description"]
+            </span>
+        </div>
+    </div>
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> مراحل کار </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="username">@Session["ProcessSteps"]</span>
+        </div>
+    </div>
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> نام مشتری </div>
+
+        <div class="profile-info-value">
+            <i class="fa fa-map-marker light-orange bigger-110"></i>
+            <span class="editable" id="country">@Html.DisplayFor(model => model.CustomerName)</span>
+
+        </div>
+    </div>
+
+    @{int UserType;
+
+
+        UserType = Convert.ToInt32(Session["UserType"]);
+
+        if (UserType == 12 || UserType == 1)
+        {
+            <div class="profile-info-row">
+                <div class="profile-info-name"> تلفن مشتری </div>
+
+                <div class="profile-info-value">
+                    <i class="fa fa-map-marker light-orange bigger-110"></i>
+                    <span class="editable" id="country">@Session["TelCustomer"]</span>
+
+                </div>
+            </div>
+        }
+
+
+    }
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> تاریخ سفارش </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="age">@Session["TarikhOrder"]</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name"> تاریخ ارجاع به کارشناس </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="age"> @Html.DisplayFor(model => model.StartJobDateStr)</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name"> توضیحات </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="signup">@Html.DisplayFor(model => model.Description)</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name"> شماره فاکتور </div>
+
+
+        @if (Session["FaktorNumber"] == null)
+        {
+            <div class="profile-info-value">
+                <span class="editable" id="signup">  <input type="text" id="txtFaktorNumber" name="txtFaktorNumber" placeholder=" شماره فاکتور" class="col-xs-10 col-sm-5" /></span>
+            </div>
+        }
+        else
+        {
+            <textarea id="txtFaktorNumber">@Session["FaktorNumber"]</textarea>
+
+        }
+
+
+
+    </div>
+
+
+    <div class="profile-info-row">
+        <div class="profile-info-name">توضیحات کارشناس</div>
+
+        @if (Session["DescriptionExpert"] == null)
+        {
+             <div class="profile-info-value">
+                <span class="editable" id="signup"><textarea id="Txttozihat"></textarea></span>
+             </div>
+        }
+        else
+        {
+            <textarea id="Txttozihat">@Session["DescriptionExpert"]</textarea>
+
+        }
+
+
+
+        
+    </div>
+
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> عملیات </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="about">
+
+                <input type="button" class="btn btn-yellow"
+                       value="دریافت شد"
+                       @*onclick="location.href = '@Url.Action("Change_jobStatus", "JobsDetails")?data1=' + 2 " />*@
+                       onclick="location.href = '@Url.Action("Change_jobStatus", "JobsDetails")?data1=' + document.getElementById('Txttozihat').value+ '&data2=' + 2 " />
+
+
+
+                <input type="button" class="btn btn-warning"
+                       value="در حال انجام"
+                       onclick="location.href = '@Url.Action("Change_jobStatus", "JobsDetails")?data1=' + document.getElementById('Txttozihat').value+ '&data2=' + 3 " />
+
+
+                <input type="button" class="btn btn-success"
+                       value="پایان کار"
+                       @*onclick="location.href = '@Url.Action("Change_jobStatus", "JobsDetails")?data1=' + 4 " />*@
+                       onclick="location.href = '@Url.Action("Change_jobStatus", "JobsDetails")?data1=' + document.getElementById('Txttozihat').value+ '&data3=' + document.getElementById('txtFaktorNumber').value+ '&data2=' + 4 " />
+
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+
+

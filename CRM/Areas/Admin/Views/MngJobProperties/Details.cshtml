@@ -1,0 +1,35 @@
+﻿@model CRM.Areas.Admin.Models.JobProperty
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobProperty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.StartJobDateStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.StartJobDateStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobPropertyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

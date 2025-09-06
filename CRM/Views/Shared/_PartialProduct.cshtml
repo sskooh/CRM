@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CRM.Models.Content>
+
+
+@using (Html.BeginForm("Partial", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
+    foreach (var item in Model)
+    {
+
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-carousel slider_single-product " id="slider-single-product">
+
+                    <div class="item_slider_single-product">
+                        <div class=" d-flex justify-content-center">
+                            <div class="product_cart">
+                                <a href="#" class="card_product_img">
+                                    <img src="images/shoes541.jpg"
+                                         class="img-fluid" />
+                                </a>
+                                <div class="body_card_product text-right">
+                                    <a href="#">
+                                        <h3></h3>
+                                    </a>
+                                    <div class="price_card_product">
+                                        <del class="ms-1">150000تومان</del><span>
+                                            120000
+                                            تومان
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card_footer_product d-flex justify-content-between align-items-center">
+                                    <div class="star_rating">
+                                        <span class="star-icon star-icon-active">
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="star-icon star-icon-active">
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="star-icon star-icon-active">
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="star-icon "><i class="far fa-star"></i></span>
+                                        <span class="star-icon"><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="area_icon_cardFooter d-flex align-items-center">
+                                        <a href="#" class="border-left">
+                                            <i class="fal fa-cart-plus"></i><span class="tooltip-site">سبد خرید</span>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="fal fa-heart"></i><span class="tooltip-site">
+                                                علاقه مندی ها
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+}

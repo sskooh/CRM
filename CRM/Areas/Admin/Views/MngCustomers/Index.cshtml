@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CRM.Areas.Admin.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+    <p>
+
+
+
+        <a href="~/Admin/MngCustomers/Create"> <img src="~/assets/images/add.png" /></a>
+
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameFmily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mob)
+        </th>
+        <th>
+            نحوه آشنایی
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+       
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameFmily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Definition.IdPage)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+    
+     
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.CustomerID }) 
+        
+        
+        </td>
+    </tr>
+}
+
+</table>

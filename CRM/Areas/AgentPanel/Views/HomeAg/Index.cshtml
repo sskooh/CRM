@@ -1,0 +1,133 @@
+﻿@model IEnumerable<CRM.Areas.Admin.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AgentPanel/Views/Shared/_LayotAgent.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="center">
+                        شماره سفارش
+                    </th>
+                    <th class="detail-col">تاریخ </th>
+                    <th>سفارش دهنده</th>
+
+                    <th class="hidden-480">عنوان سفارش</th>
+
+                    <th>
+                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                        توضیحات
+                    </th>
+
+                  
+
+
+                </tr>
+            </thead>
+
+
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="center">
+                        @Html.DisplayFor(modelItem => item.ProcessID)
+                    </td>
+
+                    <td class="center">
+                        @Html.DisplayFor(modelItem => item.StartJobDateStr)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerName)
+                    </td>
+
+
+                    <td> @Html.DisplayFor(modelItem => item.Title)</td>
+
+                  
+
+                    <td>
+
+                        @{
+                            int MyId = item.Status;
+                            if (MyId == 1)
+                            {
+
+                                <span class="label label-info arrowed-in-right arrowed">ارجاع</span>
+
+                            }
+                            if (MyId == 2)
+                            {
+
+
+                                <span class="label label-info label-yellow arrowed-in-right arrowed">دریافت</span>
+
+                            }
+                            if (MyId == 3)
+                            {
+
+                                <span class="label label-info label-warning arrowed-in-right arrowed">انجام</span>
+
+
+                            }
+                            if (MyId == 4)
+
+                            {
+
+                                <span class="label label-success arrowed">پایان کار</span>
+
+                            }
+
+                        }
+                      
+
+                        <div class="action-buttons">
+
+
+                            <a href="~/AgentPanel/JobsDetails/Details/@item.JobID" class="tooltip-success" data-rel="tooltip" title="صفحه سفارشات">
+                                <button class="btn btn-xs btn-info" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110" href="~/AgentPanel/JobsDetails/Details/@item.JobID"></i>
+
+                                </button>
+
+                            </a>
+
+                        </div>
+
+
+                    </td>
+
+
+
+
+
+
+                </tr>
+
+                }
+            </tbody>
+
+
+
+
+        </table>
+    </div><!-- /.span -->
+</div>
+
+
+@*onclick="location.href = '@Url.Action("Finish_job", "HomeAg")?data1=@item.JobID'" />*@
+
+
+
+
+
+
+
+

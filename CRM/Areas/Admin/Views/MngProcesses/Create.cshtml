@@ -1,0 +1,148 @@
+﻿@model CRM.Areas.Admin.Models.Process
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+<br />
+
+<div class="profile-user-info profile-user-info-striped">
+    <div class="profile-info-row">
+        <div class="profile-info-name"> نام مشتری </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="username">@Session["NameMoshtari"]</span>
+        </div>
+    </div>
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> تلفن </div>
+
+        <div class="profile-info-value">
+            <i class="fa fa-map-marker light-orange bigger-110"></i>
+            <span class="editable" id="country">@Session["TelMoshtari"]</span>
+
+        </div>
+    </div>
+
+    <div class="profile-info-row">
+        <div class="profile-info-name"> موبایل </div>
+
+        <div class="profile-info-value">
+            <span class="editable" id="age">@Session["MobMoshtari"]</span>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ثبت سفارش</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateOrderStr, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+            <div class="col-md-10">
+                <input type="text" id="dtorder" name="dtorder" />
+                @Html.ValidationMessageFor(model => model.dateOrderStr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateStartStr, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="dtstart" name="dtstart" />
+                @Html.ValidationMessageFor(model => model.dateStartStr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.guessdateEndStr, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="guessdateEnd" name="guessdateEnd" />
+                @Html.ValidationMessageFor(model => model.guessdateEndStr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Starthour, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Starthour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Starthour, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typeOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.typeOrder, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.typeOrder, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+        
+            $("#dtorder").kendoDatePickerShamsi({ culture: "fa-IR" });
+            $("#dtstart").kendoDatePickerShamsi({ culture: "fa-IR" });
+              $("#guessdateEnd").kendoDatePickerShamsi({ culture: "fa-IR" });
+            $("#Starthour").kendoTimePicker();
+        
+        });
+    </script>
+
+}
+
+
+
+
+
+

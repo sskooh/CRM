@@ -1,0 +1,39 @@
+﻿@model CRM.Areas.Admin.Models.Job
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+
+
+<h3>آیا از حذف این کار مطئن هستید؟</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agent.NameFmily)
+        </dt>
+
+    
+
+      
+
+      
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="حذف" class="btn btn-default" /> |
+    <a href="/Admin/MngJobs/Index/@Model.ProcessID" class="tooltip-success" data-rel="tooltip" title="بازگشت">
+        <span class="green">
+         بازگشت
+        </span>
+    </a>
+</div>
+    }
+</div>

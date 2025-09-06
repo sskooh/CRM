@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CRM.Areas.Admin.Models.Follow>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Agent.NameFmily)
+        </th>
+   
+        <th>
+            @Html.DisplayNameFor(model => model.RegDatestr)
+        </th>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.RegClockstr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RememberJobDateStr)
+        </th>
+       
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+       
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agent.NameFmily)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.RegDatestr)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.RegClockstr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.RememberJobDateStr)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+  
+     
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FollowID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FollowID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FollowID })
+        </td>
+    </tr>
+}
+
+</table>

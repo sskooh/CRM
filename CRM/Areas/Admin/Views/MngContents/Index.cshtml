@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CRM.Models.Content>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<br />
+<p>
+    @Html.ActionLink("اضافه کردن محصول", "Create")
+</p>
+<table class="table">
+    <tr>
+
+
+        <th>
+            عنوان
+        </th>
+        <th>
+            نوع مطلب
+        </th>
+        <th>
+            عکس
+        </th>
+
+        <th>
+            عمليات
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @if (item.BranchID == 2)
+        {<p><img src="~/img/green.png">@item.TitleAdress</p>}
+
+        @if (item.BranchID == 1)
+        {<p>@item.TitleAdress</p>}
+
+    </td>
+
+    <td>
+        <img height="100" width="100" src="~/img/@item.MainPicture">
+
+    </td>
+    <td>
+        @Html.ActionLink("ویرایش", "Edit", new { id = item.ContentID })
+
+    </td>
+
+  
+</tr>
+}
+
+</table>

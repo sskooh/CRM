@@ -1,0 +1,145 @@
+﻿@model CRM.Areas.Admin.Models.Follow
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Follow</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agent.NameFmily)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agent.NameFmily)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.RegDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.RegDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegDatestr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegDatestr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegDateInt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegDateInt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegClockstr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegClockstr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RememberJobDateStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RememberJobDateStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RememberJobDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RememberJobDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RememberClockstr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RememberClockstr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionExpert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionExpert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ordered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ordered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Star)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Star)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

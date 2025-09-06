@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CRM.Models.Content>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSigleForm.cshtml";
+}
+
+
+<h1 class="title-font text-center my-4 title-line-bottom-center">سفارش شاپینگ بگ</h1>
+<p class="text-center title-line-bottom-center">سئوالات متداول</p>
+<div class="about-us-faq">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                    نحوه ی سفارش ساک خرید کاغذی به چه صورته؟
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne" style="">
+                <div class="accordion-body">
+                    <p>
+                        شما با تماس با کارشناسان فروش به راحتی میتوانید سفارش خود را در هر اندازه و ابعاد و رنگی که هست ثبت کنید .
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    ساخت ساک خرید چقدر زمان میبرد؟
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo" style="">
+                <div class="accordion-body">
+                    <p>
+                        ساک های خرید آماده به صورت آنی تحویل شما میگردد، اما ساک های خرید سفارشی بین 3 الی 7 روز
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    ارسال محصول چه مقدار زمان می برد؟
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree" style="">
+                <div class="accordion-body">
+                    <p>
+                        پس از ساخت اگر درتهران تشریف دارید همان روز برای شما ارسال میگردد و در نقاط دیگر ایران با باربریهای رایج ارسال خواهد گردید.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row gy-4">
+
+    <div class="account-settings col-lg-4">
+        <a href="../Ready-Glossy-Shopping-Bag">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="../img/ساک-خرید-گلاسه-آماده-پاکت.png" alt="ساک خرید گلاسه آماده پاکت">
+                </div>
+                <strong class="user-name">ساک خرید کاغذی گلاسه آماده</strong>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="account-settings col-lg-4">
+        <a href="../Ready-Kraft-Shopping-Bag">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="../img/ساک-خرید-کرافت-آماده-پاکت.png" alt="ساک خرید کرافت آماده پاکت">
+                </div>
+                <strong class="user-name">ساک خرید کاغذی کرافت آماده</strong>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="account-settings col-lg-4">
+        <a href="../Exclusive-Shopping-Bag">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="../img/ساک-خرید-اختصاصی-پاکت.png" alt="ساک خرید اختصاصی پاکت">
+                </div>
+                <strong class="user-name">ساک خرید کاغذی اختصاصی</strong>
+
+            </div>
+        </a>
+    </div>
+
+</div>

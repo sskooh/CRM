@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CRM.Areas.Admin.Models.Customer>
+
+@{
+    Layout = "~/Areas/Login/Views/Shared/_layotLogin.cshtml";
+
+    //Layout = "";
+
+}
+
+
+
+@using (Html.BeginForm("index", "Defualt", FormMethod.Post))
+{
+
+
+    <label class="block clearfix">
+        <span class]="block input-icon input-icon-right">
+            <input type="text" class="form-control" placeholder="نام کاربری" name="UserName" />
+            <i class="ace-icon fa fa-user"></i>
+        </span>
+    </label>
+
+    <label class="block clearfix">
+        <span class="block input-icon input-icon-right">
+            <input type="password" class="form-control" placeholder="کلمه عبور"  name="Password"/>
+            <i class="ace-icon fa fa-lock"></i>
+        </span>
+    </label>
+
+    <div class="space"></div>
+
+    <div class="clearfix">
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ورود" class="btn btn-default" />
+            </div>
+        </div>
+        @*<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+            <i class="ace-icon fa fa-key"></i>
+            <span class="bigger-110">ورود</span>
+        </button>*@
+    </div>
+
+    <div class="space-4"></div>
+
+}
+

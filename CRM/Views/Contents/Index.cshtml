@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CRM.Models.Content>
+
+@{
+    /**/
+
+
+    ViewBag.Title = ViewBag.TitlesP;
+    Layout = "~/Views/Shared/_LayoutProductForm.cshtml";
+
+}
+
+
+@foreach (var item in Model)
+
+{
+
+    if (item.BranchID == 2)
+    {
+        <div class="col-lg-4">
+
+            <a href="../@item.TitleAdress">
+
+                <div class="product-box">
+                    <div class="product-box-image">
+                        <img src="../img/@item.MainPicture" loading="lazy" alt="@item.Keywords" class="img-fluid one-image">
+
+
+                        <img src="../img/@item.Pic1" loading="lazy" alt="@item.Keywords" class="img-fluid two-image">
+
+                    </div>
+
+                    <div class="product-box-title">
+
+                        <p class="text-overflow-2 text-center">
+                            @item.Title
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-4">
+
+            <a href="../img/@item.MainPicture">
+
+                <div class="product-box">
+                    <div class="product-box-image">
+                        <img src="../img/@item.MainPicture" loading="lazy" alt="@item.Keywords" class="img-fluid one-image">
+
+
+                        <img src="../img/@item.Pic1" loading="lazy" alt="@item.Keywords" class="img-fluid two-image">
+
+                    </div>
+
+                    <div class="product-box-title">
+
+                        <p class="text-overflow-2 text-center">
+                            @item.Title
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    };
+
+
+}
+
+

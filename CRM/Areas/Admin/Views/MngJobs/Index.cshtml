@@ -1,0 +1,1268 @@
+﻿@model IEnumerable<CRM.Areas.Admin.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<br />
+
+
+<div class="alert alert-block alert-success">
+
+
+
+    @*<button type="button" class="close" data-dismiss="alert">
+            <i class="ace-icon fa fa-times"></i>
+        </button>*@
+
+
+    <p>
+
+        <span class="label label-danger arrowed-in">
+
+            شماره سفارش : @Session["ProcessID"]
+
+
+        </span>
+
+        <br />
+        <strong>
+            <i class="ace-icon fa fa-check"></i>
+            نام مشتری : @Session["NameFmily"]
+        </strong>
+        <br />
+        <strong>
+            تلفن مشتری :@Session["Tel"]<br />
+            موبايل : @Session["Mob"]<br />
+            عنوان سفارش : @Session["ProcessTitle"]<br />
+            نوع سفارش : @Session["ProcessTypeOrder"]<br />
+
+        </strong>
+
+
+    </p>
+    <br />
+
+    @*<a href="~/Admin/MngJobs/Index/@Session["IDprv"]" class="btn btn-danger" data-rel="tooltip" value="قبلی">
+      
+            <i class="ace-icon fa fa-arrow-right bigger-110" href="~/Admin/MngJobs/Index/@Session["IDprv"]"></i>
+
+      
+
+    </a>
+
+    <a href="~/Admin/MngJobs/Index/@Session["IDnxt"]" class="btn btn-purple" data-rel="tooltip" value="بعدی">
+  
+            <i class="ace-icon fa fa-arrow-left bigger-110" href="~/Admin/MngJobs/Index/@Session["IDnxt"]"></i>
+
+    </a>*@
+
+    <input type="button" class="btn btn-pink" value="قبلی"
+               onclick="location.href = '@Url.Action("PRV", "MngJobs")'" />
+
+
+
+
+        <input type="button" class="btn btn-success"
+               value="بعدی"
+               onclick="location.href = '@Url.Action("NXT", "MngJobs")'" />
+
+
+
+</div>
+
+@{ if (@Session["msgInkarmojodAst"] != null)
+    {
+
+
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+
+            <strong>
+                <i class="ace-icon fa fa-times"></i>
+                Oh !
+            </strong>
+
+            @Session["msgInkarmojodAst"]
+            <br />
+        </div>
+        Session["msgInkarmojodAst"] = null;
+
+
+
+    }
+
+}
+
+
+@*@foreach (var item in Model)
+    {
+        @{
+            if (item.Status == null)
+            {
+                <span>همه کارگاهها</span>
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.Description)
+            }
+
+        }
+
+            }*@
+
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">طراحی</h4>
+            @if (Convert.ToInt32(Session["mojodin"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhTarahi"] </label>
+                    <hr />
+
+
+                    @if (Session["MsgTarahi"] == null)
+                    {
+                        @Html.TextArea("txtID_Tarahi")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Tarahi" class="form-control" placeholder="دستورکار">@Session["MsgTarahi"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Tarahi').value+ '&data2=' + 1 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 1 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">قالب سازی</h4>
+            @if (Convert.ToInt32(Session["mojodin_ghalebSazi"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_ghalebSazi"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_ghalebSazi"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_ghalebSazi"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["Tarikhghalebsazi"] </label>
+                    <hr />
+
+                    @if (Session["Msgghalebsazi"] == null)
+                    {
+                        @Html.TextArea("txtID_ghalebsazi")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_ghalebsazi" class="form-control" placeholder="دستورکار">@Session["Msgghalebsazi"]</textarea>
+
+                    }
+                </div>
+
+
+                <br />
+
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_ghalebsazi').value+ '&data2=' + 13 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 13 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">ليتو گرافی</h4>
+            @if (Convert.ToInt32(Session["mojodin_lito"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_lito"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_lito"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_lito"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhLito"] </label>
+                    <hr />
+
+                    @if (Session["MsgLito"] == null)
+                    {
+                        @Html.TextArea("txtID_litografi")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_ghalebsazi" class="form-control" placeholder="دستورکار">@Session["MsgLito"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_litografi').value+ '&data2=' + 2 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 2 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">کاغذ فروش</h4>
+            @if (Convert.ToInt32(Session["mojodin_Kaghaz"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Kaghaz"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Kaghaz"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Kaghaz"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhKaghaz"] </label>
+                    <hr />
+
+                    @if (Session["MsgKaghaz"] == null)
+                    {
+                        @Html.TextArea("txtID_KaghazForosh")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_KaghazForosh" class="form-control" placeholder="دستورکار">@Session["MsgKaghaz"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_KaghazForosh').value+ '&data2=' + 3 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 3 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">چاپخانه</h4>
+            @if (Convert.ToInt32(Session["mojodin_Chapkhaneh"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Chapkhaneh"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Chapkhaneh"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Chapkhaneh"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhChapkhaneh"] </label>
+                    <hr />
+
+                    @if (Session["MsgChapkhaneh"] == null)
+                    {
+                        @Html.TextArea("txtID_Chapkhaneh")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Chapkhaneh" class="form-control" placeholder="دستورکار">@Session["MsgChapkhaneh"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Chapkhaneh').value+ '&data2=' + 4 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 4 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">یو وی</h4>
+            @if (Convert.ToInt32(Session["mojodin_UV"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_UV"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_UV"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_UV"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhUV"] </label>
+                    <hr />
+
+                    @if (Session["MsgUV"] == null)
+                    {
+                        @Html.TextArea("txtID_UV")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_UV" class="form-control" placeholder="دستورکار">@Session["MsgUV"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_UV').value+ '&data2=' + 5 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 5 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">سلفون</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_Selfon"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Selfon"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Selfon"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Selfon"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhSelfon"] </label>
+                    <hr />
+
+                    @if (Session["MsgSelfon"] == null)
+                    {
+                        @Html.TextArea("txtID_Selfon")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Selfon" class="form-control" placeholder="دستورکار">@Session["MsgSelfon"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Selfon').value+ '&data2=' + 6 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 6 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">لتر و چسب</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_leter"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_leter"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_leter"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_leter"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["Tarikhleter"] </label>
+                    <hr />
+
+                    @if (Session["Msgleter"] == null)
+                    {
+                        @Html.TextArea("txtID_letter")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_letter" class="form-control" placeholder="دستورکار">@Session["Msgleter"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_letter').value+ '&data2=' + 7 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 7 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">کارتن سازی</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_kartonsazi"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_kartonsazi"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_kartonsazi"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_kartonsazi"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["Tarikhkarton"] </label>
+                    <hr />
+
+                    @if (Session["MsgKarton"] == null)
+                    {
+                        @Html.TextArea("txtID_KartonSazi")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_KartonSazi" class="form-control" placeholder="دستورکار">@Session["MsgKarton"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_KartonSazi').value+ '&data2=' + 8 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 8 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">کارگاه آلارد</h4>
+
+
+            @if (Convert.ToInt32(Session["mojodin_kargah"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_kargah"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_kargah"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_kargah"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["Tarikhkargah"] </label>
+                    <hr />
+
+                    @if (Session["Msgkargah"] == null)
+                    {
+                        @Html.TextArea("txtID_Kargah")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Kargah" class="form-control" placeholder="دستورکار">@Session["Msgkargah"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Kargah').value+ '&data2=' + 9 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 9 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">فرم عمومی</h4>
+
+
+            @if (Convert.ToInt32(Session["mojodin_Motafareghe"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Motafareghe"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Motafareghe"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Motafareghe"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhMotafareghe"] </label>
+                    <hr />
+
+                    @if (Session["MsgMotafareghe"] == null)
+                    {
+                        @Html.TextArea("txtID_Motafareghe")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Motafareghe" class="form-control" placeholder="دستورکار">@Session["MsgMotafareghe"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Motafareghe').value+ '&data2=' + 10 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 10 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">ارسال</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_Ersal"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Ersal"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Ersal"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Ersal"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhErsal"] </label>
+                    <hr />
+
+                    @if (Session["MsgErsal"] == null)
+                    {
+                        @Html.TextArea("txtID_Ersal")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Ersal" class="form-control" placeholder="دستورکار">@Session["MsgErsal"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Ersal').value+ '&data2=' + 11 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 11 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">متفرقه</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_Motefareghi"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Motefareghi"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Motefareghi"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Motefareghi"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhMotefareghi"] </label>
+                    <hr />
+
+                    @if (Session["MsgMotafareghi"] == null)
+                    {
+                        @Html.TextArea("txtID_Motafareghi")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Motafareghi" class="form-control" placeholder="دستورکار">@Session["MsgMotafareghi"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Motafareghi').value+ '&data2=' + 13 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 13 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">لیزر</h4>
+
+            @if (Convert.ToInt32(Session["mojodin_Laser"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Laser"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Laser"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Laser"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhLaser"] </label>
+                    <hr />
+
+                    @if (Session["MsgLaser"] == null)
+                    {
+                        @Html.TextArea("txtID_Laser")
+                    }
+                    else
+                    {
+                        <textarea id="MsgLaser" class="form-control" placeholder="دستورکار">@Session["MsgLaser"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Laser').value+ '&data2=' + 15 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 15 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">فاکتور</h4>
+
+
+            @if (Convert.ToInt32(Session["mojodin_Faktor"]) == 1)
+            {
+
+                <img src="~/img/blue.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Faktor"]) == 2)
+            {
+
+                <img src="~/img/yellow.png" alt="" />
+            }
+            @if (Convert.ToInt32(Session["mojodin_Faktor"]) == 3)
+            {
+
+                <img src="~/img/orange.png" alt="" />
+            }
+
+            @if (Convert.ToInt32(Session["mojodin_Faktor"]) == 4)
+            {
+
+                <img src="~/img/green.png" alt="" />
+            }
+
+
+            <div class="widget-toolbar">
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main">
+                <div>
+                    <label for="form-field-8">تاریخ دستور کار :@Session["TarikhFaktor"] </label>
+                    <hr />
+
+                    @if (Session["MsgFaktor"] == null)
+                    {
+                        @Html.TextArea("txtID_Faktor")
+                    }
+                    else
+                    {
+                        <textarea id="txtID_Faktor" class="form-control" placeholder="دستورکار">@Session["MsgFaktor"]</textarea>
+
+                    }
+                </div>
+
+                <hr />
+
+                <input type="button" class="btn btn-success"
+                       value="ثبت"
+                       onclick="location.href = '@Url.Action("add_job", "MngJobs")?data1=' + document.getElementById('txtID_Faktor').value+ '&data2=' + 12 " />
+
+                <input type="button" class="btn btn-warning"
+                       value="لغو"
+                       onclick="location.href = '@Url.Action("Delete_job", "MngJobs")?data1=' + 12 " />
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

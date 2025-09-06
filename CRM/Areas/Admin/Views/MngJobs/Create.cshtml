@@ -1,0 +1,119 @@
+﻿@model CRM.Areas.Admin.Models.Job
+
+@{
+//ViewBag.Title = "Create";
+//Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+ 
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+
+
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.OrderTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="OrderTypeID" name="OrderTypeID" />
+                @Html.ValidationMessageFor(model => model.OrderTypeID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderTypeID, "OrderTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrderTypeID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrderTypeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgentID, "AgentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AgentID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AgentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <p class="control-label col-md-2">تاریخ شروع</p>
+            <div class="col-md-10">
+                @*<input type="text" id="dtorder" name="dtorder" />*@
+                <input id="dtorder" name="dtorder" style="width:150px;" />
+                @Html.ValidationMessageFor(model => model.StartJobDateStr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+            <p class="control-label col-md-2">تاریخ پایان</p>
+            <div class="col-md-10">
+                <input type="text" id="dateStart" name="dateStart" />
+
+                @Html.ValidationMessageFor(model => model.FinishJobDateStr, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @*<textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>*@
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-default" />
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            // create DatePicker from input HTML element
+            $("#datepicker").kendoDatePicker({ culture: "en-US" });
+            $("#datepickerShamsi").kendoDatePickerShamsi({ culture: "fa-IR" });
+            $("#dtorder").kendoDatePickerShamsi({ culture: "fa-IR" });
+            $("#calendar").kendoCalendar({ culture: "en-US" });
+            $("#calendarShamsi").kendoCalendarShamsi({ culture: "fa-IR" });
+
+            $("#timepicker").kendoTimePicker();
+        });
+    </script>
+
+}
+
+
+

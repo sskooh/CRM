@@ -1,0 +1,313 @@
+﻿@model CRM.Models.Content
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Content</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LangID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LangID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TitleAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TitleAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completedescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completedescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completedescription1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completedescription1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltPic1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltPic1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltPic2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltPic2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltPic3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltPic3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltPic4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltPic4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pic5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pic5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltPic5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltPic5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branchstr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branchstr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoIDaparat1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoIDaparat1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoDescription1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoDescription1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoTag1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoTag1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoIDaparat2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoIDaparat2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoDescription2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoDescription2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoTag2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoTag2)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

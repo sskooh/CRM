@@ -1,0 +1,131 @@
+﻿@model CRM.Areas.Admin.Models.Process
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layotAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Process</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.NameFmily)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.NameFmily)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateOrderStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateOrderStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateStartStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateStartStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.guessdateEndStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guessdateEndStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.guessdateEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guessdateEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateEndStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateEndStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Starthour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Starthour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endhour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endhour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProcessID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

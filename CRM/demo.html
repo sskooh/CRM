@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>jQuery Zoom Demo</title>
+	<style>
+	
+		/* these styles are for the demo, but are not required for the plugin */
+		.zoom {
+			display:inline-block;
+			position: relative;
+		}
+		
+	
+
+		.zoom img {
+			display: block;
+		}
+
+		.zoom img::selection { background-color: transparent; }
+
+	
+	</style>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+	<script src='jquery.zoom.js'></script>
+	
+</head>
+<body>
+
+
+
+	<span class='zoom' id='ex2' style="cursor: url(grab.cur), default;">
+		<img src='https://padidehbags.com/img/%D8%B4%D8%A7%D9%BE%DB%8C%D9%86%DA%AF-%D8%A8%DA%AF-%DA%A9%D8%B1%D8%A7%D9%81%D8%AA-4.jpg' width='350' height='350' />
+		<script>
+			$(document).ready(function () {
+				$('#ex2').zoom({ on: 'grab' });
+
+			});
+		</script>
+	</span>
+	<span class='zoom' id="77"  style="cursor: url(grab.cur), default;">
+		<img src='https://padidehbags.com/img/%D8%B4%D8%A7%D9%BE%DB%8C%D9%86%DA%AF-%D8%A8%DA%AF-%DA%A9%D8%B1%D8%A7%D9%81%D8%AA-4.jpg' width='350' height='350' />
+		<script>
+			$(document).ready(function () {
+                $ ('#77').zoom({ on: 'grab' });
+
+			});
+		</script>
+	</span>
+
+</body>
+</html>
